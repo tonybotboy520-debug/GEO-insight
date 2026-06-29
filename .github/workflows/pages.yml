@@ -30,10 +30,15 @@ jobs:
         with:
           enablement: true
 
+      - name: Prepare site artifact
+        run: |
+          mkdir _site
+          cp -R index.html reader.html assets materials README.md _site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./GEO信息洞察网站
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         id: deployment
